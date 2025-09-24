@@ -18,12 +18,12 @@ jobs:
 
       - name: Build an image from Dockerfile
         run: |
-          docker build -t docker.io/hello-world:nanoserver-ltsc2025:${{ github.sha }} .
+          docker build -t docker.io/hello-world:nanoserver-ltsc2025 .
 
       - name: Run Trivy vulnerability scanner in docker mode
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'docker.io/hello-world:nanoserver-ltsc2025:${{ github.sha }}'
+          image-ref: 'docker.io/hello-world:nanoserver-ltsc2025'
           format: 'template'
           template: '@/contrib/sarif.tpl'
           output: 'trivy-results-docker.sarif'
